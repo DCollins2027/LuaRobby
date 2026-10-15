@@ -10,7 +10,7 @@ end
 
 function Player:_physics_process(delta)
 	local velocity = self.velocity
-
+	print("Balls")
 	-- Gravity
 	if not self:is_on_floor() then
 		velocity.y = velocity.y - self.gravity * delta
