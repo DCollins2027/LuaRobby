@@ -1,7 +1,7 @@
 local Player = {
 	extends = CharacterBody3D,
 }
-print("Fart")
+
 function Player:_ready()
 	self.move_speed = 5.0
 	self.gravity = 9.8
