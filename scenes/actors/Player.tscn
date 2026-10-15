@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dc0jlgfumsaco"]
+
+[ext_resource type="Script" uid="uid://d200nkhh1km5o" path="res://scenes/actors/Player.lua" id="1_xjuxa"]
+[ext_resource type="Script" uid="uid://bkwnvk4itsti7" path="res://scenes/actors/BaseCam.lua" id="2_8iu4y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qd7dn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xjuxa"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1976413430]
+script = ExtResource("1_xjuxa")
+
+[node name="PlayerShape" type="MeshInstance3D" parent="." unique_id=1703244540]
+mesh = SubResource("CapsuleMesh_qd7dn")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1226650381]
+shape = SubResource("CapsuleShape3D_xjuxa")
+
+[node name="BaseCam" type="Node3D" parent="." unique_id=1775676733]
+script = ExtResource("2_8iu4y")
+
+[node name="CameraArm" type="SpringArm3D" parent="BaseCam" unique_id=1662410477]
+spring_length = 4.0
+
+[node name="Camera" type="Camera3D" parent="BaseCam/CameraArm" unique_id=1502065700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50986767, -0.12786233)
