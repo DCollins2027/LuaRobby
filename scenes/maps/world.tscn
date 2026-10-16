@@ -23,8 +23,8 @@ albedo_color = Color(0, 0.8791505, 0.33164844, 1)
 [node name="Player" parent="." unique_id=1976413430 instance=ExtResource("1_pcytr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1657491, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1693143022]
-transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.71692276, 0, 8.555741, 12.048248)
+[node name="PlayerLight" type="DirectionalLight3D" parent="Player" unique_id=1693143022]
+transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.71692276, 0, 7.389992, 12.048248)
 
 [node name="Baseplate" type="StaticBody3D" parent="." unique_id=452846472]
 
