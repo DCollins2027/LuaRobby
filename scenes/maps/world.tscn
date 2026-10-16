@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cq6hy6ls0oi5d"]
 
 [ext_resource type="PackedScene" uid="uid://dc0jlgfumsaco" path="res://scenes/actors/Player.tscn" id="1_pcytr"]
+[ext_resource type="Script" uid="uid://bkrvfs4d1jvx4" path="res://scenes/maps/mainmenu.gd" id="2_bxnbg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
 
@@ -24,3 +25,29 @@ mesh = SubResource("BoxMesh_28y8u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=629506913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011978149, -0.0013885498, -0.00061035156)
 shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Mainmenu" type="Control" parent="." unique_id=203236508]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_bxnbg")
+
+[node name="CenterContainer" type="CenterContainer" parent="Mainmenu" unique_id=1070958368]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Mainmenu/CenterContainer" unique_id=181566904]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Mainmenu/CenterContainer/VBoxContainer" unique_id=791890274]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Mainmenu/CenterContainer/VBoxContainer" unique_id=1089221935]
+layout_mode = 2
+text = "Play
+"
+flat = true
+
+[connection signal="pressed" from="Mainmenu/CenterContainer/VBoxContainer/Button" to="Mainmenu" method="_on_button_pressed"]

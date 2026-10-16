@@ -35,6 +35,10 @@ function Player:_physics_process(delta)
 		input.x = input.x + 1
 	end
 
+	--if Input:is_action_pressed("jump") then
+		--input.y = input.y + 1
+	--end
+
 	input = input:normalized()
 
 	-- Camera-relative movement
