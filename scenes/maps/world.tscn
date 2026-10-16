@@ -4,12 +4,14 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pcytr"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pcytr"]
+size = Vector3(10, 0.2, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxnbg"]
+size = Vector3(400, 1, 400)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6w65o"]
+size = Vector3(4.5, 3.5, 4.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_55aix"]
 
@@ -27,24 +29,23 @@ transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.7169
 [node name="Baseplate" type="StaticBody3D" parent="." unique_id=452846472]
 
 [node name="Mesh" type="MeshInstance3D" parent="Baseplate" unique_id=423571337]
-transform = Transform3D(4.5, 0, 0, 0, 0.2, 0, 0, 0, 4.5, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_28y8u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=827382072]
-transform = Transform3D(4.5, 0, 0, 0, 0.2, 0, 0, 0, 4.5, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_pcytr")
+shape = SubResource("BoxShape3D_pcytr")
 
 [node name="Killzone" type="Area3D" parent="." unique_id=1354733858 groups=["killzone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=132206423]
-transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, -25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
 shape = SubResource("BoxShape3D_bxnbg")
 
 [node name="Checkpoint" type="Area3D" parent="." unique_id=1927262795]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint" unique_id=491103864]
-transform = Transform3D(4.5274315, 0, 0, 0, 3.7616754, 0, 0, 0, 4.6580877, 0, 1.8809109, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
 shape = SubResource("BoxShape3D_6w65o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint" unique_id=1010937522]
