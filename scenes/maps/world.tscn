@@ -2,28 +2,40 @@
 
 [ext_resource type="PackedScene" uid="uid://dc0jlgfumsaco" path="res://scenes/actors/Player.tscn" id="1_pcytr"]
 [ext_resource type="Script" uid="uid://bkrvfs4d1jvx4" path="res://scenes/maps/mainmenu.gd" id="2_bxnbg"]
+[ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
+[ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcytr"]
-size = Vector3(4.4894714, 0.21005249, 4.6813965)
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxnbg"]
+size = Vector3(400, 1, 400)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6w65o"]
+size = Vector3(4.5, 3.5, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_55aix"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_lvkeh"]
+albedo_color = Color(0, 0.8791505, 0.33164844, 1)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 
-[node name="Player" parent="." unique_id=1976413430 instance=ExtResource("1_pcytr")]
+[node name="Player" parent="." unique_id=1976413430 groups=["player"] instance=ExtResource("1_pcytr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1657491, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1693143022]
-transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.71692276, 0, 8.555741, 12.048248)
+[node name="PlayerLight" type="DirectionalLight3D" parent="Player" unique_id=1693143022]
+transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.71692276, 0, 7.389992, 12.048248)
 
 [node name="Baseplate" type="StaticBody3D" parent="." unique_id=452846472]
 
 [node name="Mesh" type="MeshInstance3D" parent="Baseplate" unique_id=423571337]
-transform = Transform3D(4.5, 0, 0, 0, 0.19999999, 0, 0, 0, 4.68, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_28y8u")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=629506913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011978149, -0.0013885498, -0.00061035156)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=827382072]
 shape = SubResource("BoxShape3D_pcytr")
 
 [node name="Mainmenu" type="Control" parent="." unique_id=203236508]
@@ -51,3 +63,37 @@ text = "Play
 flat = true
 
 [connection signal="pressed" from="Mainmenu/CenterContainer/VBoxContainer/Button" to="Mainmenu" method="_on_button_pressed"]
+[node name="Killzone" type="Area3D" parent="." unique_id=1354733858 groups=["killzone"]]
+transform = Transform3D(6.553859, 0, 0, 0, 1.2204874, 0, 0, 0, 3.4492812, 0, -20, 0)
+script = ExtResource("2_bxnbg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=132206423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_bxnbg")
+
+[node name="Checkpoint" type="Area3D" parent="." unique_id=1927262795 groups=["checkpoints"]]
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint" unique_id=491103864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint" unique_id=1010937522]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Checkpoint" unique_id=1264641753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Baseplate2" type="StaticBody3D" parent="." unique_id=902113726]
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate2" unique_id=1730139826]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate2" unique_id=914949238]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1405143738 groups=["lights"]]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.0364656, 0)

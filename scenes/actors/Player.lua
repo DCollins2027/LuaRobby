@@ -4,13 +4,17 @@ local Player = {
 
 function Player:_ready()
 	self.move_speed = 5.0
-	self.gravity = 9.8
+	self.gravity = 13.0
 	self.base_cam = self:get_node("BaseCam")
+	self.camera_arm = self.base_cam:get_node("CameraArm")
+	self.camera = self.camera_arm:get_node("Camera")
+	self.jump_strength = 7.0
+	self.light = self:get_node("PlayerLight")
 end
 
 function Player:_physics_process(delta)
 	local velocity = self.velocity
-	print("Balls")
+	
 	-- Gravity
 	if not self:is_on_floor() then
 		velocity.y = velocity.y - self.gravity * delta
@@ -34,6 +38,12 @@ function Player:_physics_process(delta)
 	if Input:is_action_pressed("move_right") then
 		input.x = input.x + 1
 	end
+	
+	if Input:is_action_pressed("move_jump") then
+		if self:is_on_floor() then
+			velocity.y = self.jump_strength
+		end
+	end
 
 	--if Input:is_action_pressed("jump") then
 		--input.y = input.y + 1
@@ -43,6 +53,12 @@ function Player:_physics_process(delta)
 
 	-- Camera-relative movement
 	local camera_basis = self.base_cam.global_transform.basis
+	
+	-- Light follow Player
+	
+	local light_transform = self.light.global_transform
+	light_transform.basis = self.camera.global_transform.basis
+	self.light.global_transform = light_transform
 
 	local forward = -camera_basis.z
 	local right = camera_basis.x
@@ -68,6 +84,8 @@ function Player:_physics_process(delta)
 
 	self.velocity = velocity
 	self:move_and_slide()
-end
+	
+	end
+	
 
 return Player
