@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LuaRobby"
-run/main_scene="uid://dj0t0fis3fsg8"
+run/main_scene="uid://cq6hy6ls0oi5d"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
