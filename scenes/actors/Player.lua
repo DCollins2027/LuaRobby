@@ -52,8 +52,9 @@ function Player:_physics_process(delta)
 	
 	-- Light follow Player
 	
-	local player_light_basis = self.camera.global_transform.basis
-	self.light.global_transform.basis = player_light_basis
+	local light_transform = self.light.global_transform
+	light_transform.basis = self.camera.global_transform.basis
+	self.light.global_transform = light_transform
 
 	local forward = -camera_basis.z
 	local right = camera_basis.x
