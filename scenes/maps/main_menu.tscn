@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b87xhthsvxdpv"]
+
+[ext_resource type="Script" uid="uid://dl2s68yk7xq3" path="res://scenes/maps/main_menu.gd" id="1_4rqo4"]
+[ext_resource type="Texture2D" uid="uid://iihbhipeinui" path="res://Background.png" id="2_pmeri"]
+
+[node name="MainMenu" type="Control" unique_id=599839940]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4rqo4")
+
+[node name="background" type="TextureRect" parent="." unique_id=1851111204]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pmeri")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=324693903]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1369449590]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1799536207]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 50
+text = "Fall, man"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1179571395]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70903146, 0, 0.20188496, 1)
+theme_override_font_sizes/font_size = 28
+text = "Press enter to play"
+flat = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
