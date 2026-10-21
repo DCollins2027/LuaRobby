@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dc0jlgfumsaco" path="res://scenes/actors/Player.tscn" id="1_pcytr"]
 [ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
+[ext_resource type="Script" uid="uid://bl6pu2ugicduh" path="res://scenes/maps/kill_brick.gd" id="4_55aix"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -21,6 +22,22 @@ size = Vector3(4.5, 3.5, 4.5)
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_lvkeh"]
 albedo_color = Color(0, 0.8791505, 0.33164844, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvkeh"]
+albedo_color = Color(0.8352941, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74gp3"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.79446757, 0, 0.0067275236, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pq5yi"]
+material = SubResource("StandardMaterial3D_74gp3")
+size = Vector3(0.5, 0.2, 4.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_av32x"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_55aix"]
+data = PackedVector3Array(-0.25, 0.099999994, 2.45, 0.25, 0.099999994, 2.45, -0.25, -0.099999994, 2.45, 0.25, 0.099999994, 2.45, 0.25, -0.099999994, 2.45, -0.25, -0.099999994, 2.45, 0.25, 0.099999994, -2.45, -0.25, 0.099999994, -2.45, 0.25, -0.099999994, -2.45, -0.25, 0.099999994, -2.45, -0.25, -0.099999994, -2.45, 0.25, -0.099999994, -2.45, 0.25, 0.099999994, 2.45, 0.25, 0.099999994, -2.45, 0.25, -0.099999994, 2.45, 0.25, 0.099999994, -2.45, 0.25, -0.099999994, -2.45, 0.25, -0.099999994, 2.45, -0.25, 0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, -0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, -0.099999994, 2.45, -0.25, -0.099999994, -2.45, 0.25, 0.099999994, 2.45, -0.25, 0.099999994, 2.45, 0.25, 0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, 0.099999994, -2.45, 0.25, 0.099999994, -2.45, -0.25, -0.099999994, 2.45, 0.25, -0.099999994, 2.45, -0.25, -0.099999994, -2.45, 0.25, -0.099999994, 2.45, 0.25, -0.099999994, -2.45, -0.25, -0.099999994, -2.45)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 
@@ -148,3 +165,17 @@ theme_override_font_sizes/font_size = 32
 text = "Checkpoint reached!
 "
 horizontal_alignment = 1
+
+[node name="KillBrick" type="Area3D" parent="." unique_id=1383352333 groups=["killzone"]]
+transform = Transform3D(0.9705224, 0, 0, 0, 1, 0, 0, 0, 1, 13.466339, 3.2817092, 0)
+script = ExtResource("4_55aix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KillBrick" unique_id=1717244687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4514236, -3.1889443, 0.046566248)
+material_override = SubResource("StandardMaterial3D_lvkeh")
+mesh = SubResource("BoxMesh_pq5yi")
+surface_material_override/0 = SubResource("StandardMaterial3D_av32x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillBrick" unique_id=1477222734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4514236, -3.1889443, 0.046566248)
+shape = SubResource("ConcavePolygonShape3D_55aix")
