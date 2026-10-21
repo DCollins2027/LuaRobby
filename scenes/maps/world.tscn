@@ -5,13 +5,12 @@
 [ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 [ext_resource type="Script" uid="uid://bl6pu2ugicduh" path="res://scenes/maps/kill_brick.gd" id="4_55aix"]
+[ext_resource type="Script" uid="uid://dktan7o1uqm6m" path="res://scenes/maps/rotating_platform.gd" id="6_74gp3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcytr"]
 size = Vector3(10, 0.2, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxnbg"]
 size = Vector3(1000, 0.1, 1000)
@@ -23,6 +22,8 @@ size = Vector3(4.5, 3.5, 4.5)
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_lvkeh"]
 albedo_color = Color(0, 0.8791505, 0.33164844, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvkeh"]
 albedo_color = Color(0.8352941, 0, 0, 1)
@@ -40,6 +41,12 @@ size = Vector3(0.5, 0.2, 4.9)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_55aix"]
 data = PackedVector3Array(-0.25, 0.099999994, 2.45, 0.25, 0.099999994, 2.45, -0.25, -0.099999994, 2.45, 0.25, 0.099999994, 2.45, 0.25, -0.099999994, 2.45, -0.25, -0.099999994, 2.45, 0.25, 0.099999994, -2.45, -0.25, 0.099999994, -2.45, 0.25, -0.099999994, -2.45, -0.25, 0.099999994, -2.45, -0.25, -0.099999994, -2.45, 0.25, -0.099999994, -2.45, 0.25, 0.099999994, 2.45, 0.25, 0.099999994, -2.45, 0.25, -0.099999994, 2.45, 0.25, 0.099999994, -2.45, 0.25, -0.099999994, -2.45, 0.25, -0.099999994, 2.45, -0.25, 0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, -0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, -0.099999994, 2.45, -0.25, -0.099999994, -2.45, 0.25, 0.099999994, 2.45, -0.25, 0.099999994, 2.45, 0.25, 0.099999994, -2.45, -0.25, 0.099999994, 2.45, -0.25, 0.099999994, -2.45, 0.25, 0.099999994, -2.45, -0.25, -0.099999994, 2.45, 0.25, -0.099999994, 2.45, -0.25, -0.099999994, -2.45, 0.25, -0.099999994, 2.45, 0.25, -0.099999994, -2.45, -0.25, -0.099999994, -2.45)
 
+[sub_resource type="BoxMesh" id="BoxMesh_74gp3"]
+size = Vector3(5, 0.2, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pq5yi"]
+data = PackedVector3Array(-2.5, 0.099999994, 2.5, 2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, 0.099999994, 2.5, 2.5, -0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, 0.099999994, -2.5, -2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, -2.5, 0.099999994, -2.5, -2.5, -0.099999994, -2.5, 2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, 2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, 2.5, -0.099999994, 2.5, -2.5, 0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, -0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, -2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, -2.5, 0.099999994, 2.5, 2.5, 0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, 0.099999994, -2.5, 2.5, 0.099999994, -2.5, -2.5, -0.099999994, 2.5, 2.5, -0.099999994, 2.5, -2.5, -0.099999994, -2.5, 2.5, -0.099999994, 2.5, 2.5, -0.099999994, -2.5, -2.5, -0.099999994, -2.5)
+
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
 
@@ -56,16 +63,6 @@ transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_6w65o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=827382072]
-shape = SubResource("BoxShape3D_pcytr")
-
-[node name="Baseplate" type="StaticBody3D" parent="Baseplate" unique_id=1094851632]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.057392, 0, 0)
-
-[node name="Mesh" type="MeshInstance3D" parent="Baseplate/Baseplate" unique_id=1608384474]
-transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_28y8u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate/Baseplate" unique_id=1394487929]
 shape = SubResource("BoxShape3D_pcytr")
 
 [node name="Killzone" type="Area3D" parent="." unique_id=1354733858 groups=["killzone"]]
@@ -181,3 +178,59 @@ surface_material_override/0 = SubResource("StandardMaterial3D_av32x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillBrick" unique_id=1477222734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4514236, -3.1889443, 0.046566248)
 shape = SubResource("ConcavePolygonShape3D_55aix")
+
+[node name="RotatingPlatform" type="AnimatableBody3D" parent="." unique_id=1706776042]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 43.838554, 0, -0.2599918)
+script = ExtResource("6_74gp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RotatingPlatform" unique_id=742598413]
+mesh = SubResource("BoxMesh_74gp3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotatingPlatform" unique_id=835849703]
+shape = SubResource("ConcavePolygonShape3D_pq5yi")
+
+[node name="Baseplate6" type="StaticBody3D" parent="." unique_id=1094851632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.057392, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate6" unique_id=1608384474]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate6" unique_id=1394487929]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Baseplate6" type="StaticBody3D" parent="Baseplate6" unique_id=1204355527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.057392, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate6/Baseplate6" unique_id=443611240]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate6/Baseplate6" unique_id=1337565550]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="." unique_id=924851500 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.54412, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3" unique_id=51687567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint3" unique_id=162418165]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Checkpoint3" unique_id=769389399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Checkpoint3" unique_id=1553634887]
+
+[node name="Label" type="Label" parent="Checkpoint3/Message" unique_id=532704805]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
