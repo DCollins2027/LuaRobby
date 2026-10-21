@@ -4,13 +4,15 @@
 [ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
+[sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcytr"]
 size = Vector3(10, 0.2, 10)
 
+[sub_resource type="BoxMesh" id="BoxMesh_28y8u"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxnbg"]
-size = Vector3(400, 1, 400)
+size = Vector3(1000, 0.1, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6w65o"]
 size = Vector3(4.5, 3.5, 4.5)
@@ -32,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.7169
 
 [node name="Mesh" type="MeshInstance3D" parent="Baseplate" unique_id=423571337]
 transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_28y8u")
+mesh = SubResource("BoxMesh_6w65o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=827382072]
 shape = SubResource("BoxShape3D_pcytr")
@@ -48,7 +50,7 @@ mesh = SubResource("BoxMesh_28y8u")
 shape = SubResource("BoxShape3D_pcytr")
 
 [node name="Killzone" type="Area3D" parent="." unique_id=1354733858 groups=["killzone"]]
-transform = Transform3D(6.553859, 0, 0, 0, 1.2204874, 0, 0, 0, 3.4492812, 0, -20, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
 script = ExtResource("2_bxnbg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=132206423]
@@ -69,6 +71,15 @@ surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
 
 [node name="RespawnPoint" type="Marker3D" parent="Checkpoint" unique_id=1264641753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Checkpoint" unique_id=1125687200]
+
+[node name="Label" type="Label" parent="Checkpoint/Message" unique_id=486822748]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Checkpoint reached!
+"
 
 [node name="Baseplate2" type="StaticBody3D" parent="." unique_id=902113726]
 
@@ -112,33 +123,28 @@ mesh = SubResource("BoxMesh_28y8u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate5" unique_id=2088807561]
 shape = SubResource("BoxShape3D_pcytr")
 
-[node name="Checkpoint2" type="Area3D" parent="." unique_id=1512139251 groups=["checkpoints"]]
-script = ExtResource("3_6w65o")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2" unique_id=1854795730]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
-shape = SubResource("BoxShape3D_6w65o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint2" unique_id=447976277]
-transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
-mesh = SubResource("BoxMesh_55aix")
-surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
-
-[node name="RespawnPoint" type="Marker3D" parent="Checkpoint2" unique_id=1024659169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="Checkpoint3" type="Area3D" parent="." unique_id=678431565 groups=["checkpoints"]]
+[node name="Checkpoint2" type="Area3D" parent="." unique_id=678431565 groups=["checkpoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.23723, 0, 0)
 script = ExtResource("3_6w65o")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3" unique_id=105610806]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2" unique_id=105610806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
 shape = SubResource("BoxShape3D_6w65o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint3" unique_id=1142817704]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint2" unique_id=1142817704]
 transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
 mesh = SubResource("BoxMesh_55aix")
 surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
 
-[node name="RespawnPoint" type="Marker3D" parent="Checkpoint3" unique_id=1375977940]
+[node name="RespawnPoint" type="Marker3D" parent="Checkpoint2" unique_id=1375977940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Checkpoint2" unique_id=2034780176]
+
+[node name="Label" type="Label" parent="Checkpoint2/Message" unique_id=661155555]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
