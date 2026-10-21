@@ -37,6 +37,16 @@ mesh = SubResource("BoxMesh_28y8u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate" unique_id=827382072]
 shape = SubResource("BoxShape3D_pcytr")
 
+[node name="Baseplate" type="StaticBody3D" parent="Baseplate" unique_id=1094851632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.057392, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate/Baseplate" unique_id=1608384474]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate/Baseplate" unique_id=1394487929]
+shape = SubResource("BoxShape3D_pcytr")
+
 [node name="Killzone" type="Area3D" parent="." unique_id=1354733858 groups=["killzone"]]
 transform = Transform3D(6.553859, 0, 0, 0, 1.2204874, 0, 0, 0, 3.4492812, 0, -20, 0)
 script = ExtResource("2_bxnbg")
@@ -71,3 +81,64 @@ shape = SubResource("BoxShape3D_pcytr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1405143738 groups=["lights"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.0364656, 0)
+
+[node name="Baseplate3" type="StaticBody3D" parent="." unique_id=980354769]
+transform = Transform3D(0.47924244, 0, 0, 0, 1, 0, 0, 0, 0.4921261, 9.980947, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate3" unique_id=1233518645]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate3" unique_id=1297124825]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Baseplate4" type="StaticBody3D" parent="." unique_id=1591038581]
+transform = Transform3D(0.47924244, 0, 0, 0, 1, 0, 0, 0, 0.4921261, 17.490414, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate4" unique_id=1084877720]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate4" unique_id=433611620]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Baseplate5" type="StaticBody3D" parent="." unique_id=1032577158]
+transform = Transform3D(0.4497426, -0.3454292, 0, 0.16554435, 0.9384448, 0, 0, 0, 0.4921261, 24.520342, 0.84911424, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate5" unique_id=1616929734]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate5" unique_id=2088807561]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint2" type="Area3D" parent="." unique_id=1512139251 groups=["checkpoints"]]
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2" unique_id=1854795730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint2" unique_id=447976277]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Checkpoint2" unique_id=1024659169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Checkpoint3" type="Area3D" parent="." unique_id=678431565 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.23723, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3" unique_id=105610806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint3" unique_id=1142817704]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Checkpoint3" unique_id=1375977940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
