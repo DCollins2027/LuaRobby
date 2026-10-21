@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cq6hy6ls0oi5d"]
 
+[ext_resource type="Script" uid="uid://bn4nxc0gmiwpe" path="res://scenes/maps/world.gd" id="1_55aix"]
 [ext_resource type="PackedScene" uid="uid://dc0jlgfumsaco" path="res://scenes/actors/Player.tscn" id="1_pcytr"]
 [ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
@@ -21,6 +22,7 @@ size = Vector3(4.5, 3.5, 4.5)
 albedo_color = Color(0, 0.8791505, 0.33164844, 1)
 
 [node name="World" type="Node3D" unique_id=1484464901]
+script = ExtResource("1_55aix")
 
 [node name="Player" parent="." unique_id=1976413430 groups=["player"] instance=ExtResource("1_pcytr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1657491, 0)
