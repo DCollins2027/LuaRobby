@@ -10,6 +10,8 @@ function Player:_ready()
 	self.camera = self.camera_arm:get_node("Camera")
 	self.jump_strength = 7.0
 	self.light = self:get_node("PlayerLight")
+	self.model = self:get_node("Model")
+	self.anim = self:get_node("Model/Ninja/AnimationPlayer2")
 end
 
 function Player:_physics_process(delta)
@@ -77,6 +79,11 @@ function Player:_physics_process(delta)
 
 		velocity.x = direction.x * self.move_speed
 		velocity.z = direction.z * self.move_speed
+		
+		local target = math.atan(direction.x, direction.z) + math.pi
+		local rot = self.model.rotation
+		rot.y = lerp_angle(rot.y, target, 12 * delta)
+		self.model.rotation = rot
 	else
 		velocity.x = 0
 		velocity.z = 0
@@ -85,7 +92,28 @@ function Player:_physics_process(delta)
 	self.velocity = velocity
 	self:move_and_slide()
 	
+	local wanted = "Idle"
+
+	if not self:is_on_floor() then
+		if self.velocity.y > 0 and not self.jump_started then
+			self.jump_started = true
+			wanted = "Jump"
+		elseif self.anim.current_animation == "Jump" and self.anim:is_playing() then
+			wanted = "Jump"
+		else
+			wanted = "Fall"
+		end
+	else
+		self.jump_started = false
+		if input:length() > 0 then
+			wanted = "Run"
+		end
 	end
+
+	if self.anim.current_animation ~= wanted then
+		self.anim:play(wanted, 0.15)
+	end
+end
 	
 
 return Player
