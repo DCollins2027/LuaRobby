@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 [ext_resource type="Script" uid="uid://bl6pu2ugicduh" path="res://scenes/maps/kill_brick.gd" id="4_55aix"]
 [ext_resource type="Script" uid="uid://dktan7o1uqm6m" path="res://scenes/maps/rotating_platform.gd" id="6_74gp3"]
+[ext_resource type="Script" uid="uid://gvit12xo7ryp" path="res://scenes/maps/air_current.gd" id="7_pq5yi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -46,6 +47,22 @@ size = Vector3(5, 0.2, 5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pq5yi"]
 data = PackedVector3Array(-2.5, 0.099999994, 2.5, 2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, 0.099999994, 2.5, 2.5, -0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, 0.099999994, -2.5, -2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, -2.5, 0.099999994, -2.5, -2.5, -0.099999994, -2.5, 2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, 2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, 2.5, -0.099999994, 2.5, -2.5, 0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, -0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, -2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, -2.5, 0.099999994, 2.5, 2.5, 0.099999994, -2.5, -2.5, 0.099999994, 2.5, -2.5, 0.099999994, -2.5, 2.5, 0.099999994, -2.5, -2.5, -0.099999994, 2.5, 2.5, -0.099999994, 2.5, -2.5, -0.099999994, -2.5, 2.5, -0.099999994, 2.5, 2.5, -0.099999994, -2.5, -2.5, -0.099999994, -2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_av32x"]
+size = Vector3(60, 0.2, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pq5yi"]
+size = Vector3(60, 0.2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s5d3o"]
+size = Vector3(4, 8, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnf87"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.43529412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlanf"]
+size = Vector3(4, 8, 4)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -199,38 +216,62 @@ mesh = SubResource("BoxMesh_28y8u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate6" unique_id=1394487929]
 shape = SubResource("BoxShape3D_pcytr")
 
-[node name="Baseplate6" type="StaticBody3D" parent="Baseplate6" unique_id=1204355527]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.057392, 0, 0)
+[node name="Baseplate7" type="StaticBody3D" parent="." unique_id=1204355527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.114784, 0, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="Baseplate6/Baseplate6" unique_id=443611240]
+[node name="Mesh" type="MeshInstance3D" parent="Baseplate7" unique_id=443611240]
 transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_28y8u")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate6/Baseplate6" unique_id=1337565550]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate7" unique_id=1337565550]
 shape = SubResource("BoxShape3D_pcytr")
 
-[node name="Checkpoint3" type="Area3D" parent="." unique_id=924851500 groups=["checkpoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.54412, 0, 0)
+[node name="Checkpoint3" type="Area3D" parent="Baseplate7" unique_id=924851500 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
 script = ExtResource("3_6w65o")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3" unique_id=51687567]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseplate7/Checkpoint3" unique_id=51687567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
 shape = SubResource("BoxShape3D_6w65o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint3" unique_id=162418165]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseplate7/Checkpoint3" unique_id=162418165]
 transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
 mesh = SubResource("BoxMesh_55aix")
 surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
 
-[node name="RespawnPoint" type="Marker3D" parent="Checkpoint3" unique_id=769389399]
+[node name="RespawnPoint" type="Marker3D" parent="Baseplate7/Checkpoint3" unique_id=769389399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Message" type="CanvasLayer" parent="Checkpoint3" unique_id=1553634887]
+[node name="Message" type="CanvasLayer" parent="Baseplate7/Checkpoint3" unique_id=1553634887]
 
-[node name="Label" type="Label" parent="Checkpoint3/Message" unique_id=532704805]
+[node name="Label" type="Label" parent="Baseplate7/Checkpoint3/Message" unique_id=532704805]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 text = "Checkpoint reached!
 "
 horizontal_alignment = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1130472667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.471184, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1938300789]
+transform = Transform3D(0.8353447, 0, 0, 0, 1, 0, 0, 0, 0.9011148, -13.014366, 0, 0)
+mesh = SubResource("BoxMesh_av32x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1434635461]
+transform = Transform3D(0.8353447, 0, 0, 0, 1, 0, 0, 0, 0.9011148, -13.014366, 0, 0)
+shape = SubResource("BoxShape3D_pq5yi")
+
+[node name="AirCurrent" type="Area3D" parent="." unique_id=561806420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.034901, 2.6282172, 10.319254)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AirCurrent" unique_id=1136201837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AirCurrent" unique_id=565347600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
