@@ -256,15 +256,15 @@ horizontal_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.471184, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1938300789]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.61311, 0, 0)
+transform = Transform3D(0.8353447, 0, 0, 0, 1, 0, 0, 0, 0.9011148, -13.014366, 0, 0)
 mesh = SubResource("BoxMesh_av32x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=500926624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.61311, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1434635461]
+transform = Transform3D(0.8353447, 0, 0, 0, 1, 0, 0, 0, 0.9011148, -13.014366, 0, 0)
 shape = SubResource("BoxShape3D_pq5yi")
 
 [node name="AirCurrent" type="Area3D" parent="." unique_id=561806420]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.130314, 2.6282172, 16.528173)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.034901, 2.6282172, 10.319254)
 script = ExtResource("7_pq5yi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AirCurrent" unique_id=1136201837]
