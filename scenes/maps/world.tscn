@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 [ext_resource type="Script" uid="uid://bl6pu2ugicduh" path="res://scenes/maps/kill_brick.gd" id="4_55aix"]
 [ext_resource type="Script" uid="uid://dktan7o1uqm6m" path="res://scenes/maps/rotating_platform.gd" id="6_74gp3"]
+[ext_resource type="AudioStream" uid="uid://ymgvbnkq86bf" path="res://Cartoon, Daniel Levi, Jéja - On & On (feat. Daniel Levi) [NCS Release].mp3" id="7_pq5yi"]
+[ext_resource type="Script" uid="uid://cbm5hjeph0ut4" path="res://scenes/maps/audio_stream_player.gd" id="8_av32x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -234,3 +236,7 @@ theme_override_font_sizes/font_size = 32
 text = "Checkpoint reached!
 "
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865824889]
+stream = ExtResource("7_pq5yi")
+script = ExtResource("8_av32x")
