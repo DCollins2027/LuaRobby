@@ -4,7 +4,7 @@ local Player = {
 
 function Player:_ready()
 	self.move_speed = 5.0
-	self.gravity = 13.0
+	self.gravity = 16.0
 	self.base_cam = self:get_node("BaseCam")
 	self.camera_arm = self.base_cam:get_node("CameraArm")
 	self.camera = self.camera_arm:get_node("Camera")

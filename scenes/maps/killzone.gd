@@ -39,10 +39,10 @@ func _on_body_entered(body):
 
 	var t = create_tween()
 	t.set_ignore_time_scale(true)
-	t.tween_property(rect, "color:a", 0.6, 0.15)
+	t.tween_property(rect, "color:a", 0.6, 0.5)
 	t.parallel().tween_property(label, "modulate:a", 1.0, 0.15)
 	t.tween_property(rect, "color", Color(0, 0, 0, 1), 0.4)
-	t.tween_interval(0.5)
+	t.tween_interval(2)
 	await t.finished
 
 	body.global_position = Respawn.point
