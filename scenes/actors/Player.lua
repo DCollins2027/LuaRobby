@@ -4,7 +4,8 @@ local Player = {
 
 function Player:_ready()
 	self.move_speed = 5.0
-	self.gravity = 13.0
+	self.sprint_speed = 8.0
+	self.gravity = 16.0
 	self.base_cam = self:get_node("BaseCam")
 	self.camera_arm = self.base_cam:get_node("CameraArm")
 	self.camera = self.camera_arm:get_node("Camera")
@@ -46,6 +47,7 @@ function Player:_physics_process(delta)
 			velocity.y = self.jump_strength
 		end
 	end
+		
 
 	--if Input:is_action_pressed("jump") then
 		--input.y = input.y + 1
@@ -76,9 +78,14 @@ function Player:_physics_process(delta)
 
 	if input:length() > 0 then
 		direction = direction:normalized()
-
-		velocity.x = direction.x * self.move_speed
-		velocity.z = direction.z * self.move_speed
+		
+		local speed = self.move_speed
+		if Input:is_action_pressed("move_sprint") then
+			speed = self.sprint_speed
+		end
+		
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 		
 		local target = math.atan(direction.x, direction.z) + math.pi
 		local rot = self.model.rotation

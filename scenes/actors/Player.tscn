@@ -1172,3 +1172,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Model/Ninja" unique_id=1988296589]
 libraries/ = SubResource("AnimationLibrary_df4lg")
+
+[node name="PlayerLight" type="DirectionalLight3D" parent="." unique_id=1145371358]
+transform = Transform3D(1, 0, 0, 0, 0.71692276, 0.6971526, 0, -0.6971526, 0.71692276, 0, 7.389992, 12.048248)
