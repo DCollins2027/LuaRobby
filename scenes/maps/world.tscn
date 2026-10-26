@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://gvit12xo7ryp" path="res://scenes/maps/air_current.gd" id="7_pq5yi"]
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
 [ext_resource type="Script" uid="uid://bq360ew3d0ssy" path="res://scenes/maps/bouncepad.gd" id="9_s5d3o"]
+[ext_resource type="Script" uid="uid://lmmgk0phpl4y" path="res://scenes/maps/tree.gd" id="10_dnf87"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -513,3 +514,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncepad" unique_id=97576262]
 shape = SubResource("BoxShape3D_x3aai")
+
+[node name="tree" type="Node3D" parent="." unique_id=1873803874]
+script = ExtResource("10_dnf87")
+
+[node name="trunk" type="StaticBody3D" parent="tree" unique_id=494285276]
+
+[node name="hitbox" type="CollisionShape3D" parent="tree/trunk" unique_id=303217533]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tree/trunk" unique_id=343008930]
+
+[node name="leaves" type="StaticBody3D" parent="tree" unique_id=1845940945]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tree/leaves" unique_id=849501484]
+
+[node name="hitbox" type="CollisionShape3D" parent="tree/leaves" unique_id=473625045]

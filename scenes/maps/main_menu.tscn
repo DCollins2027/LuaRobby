@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b87xhthsvxdpv"]
 
 [ext_resource type="Script" uid="uid://dl2s68yk7xq3" path="res://scenes/maps/main_menu.gd" id="1_4rqo4"]
-[ext_resource type="Texture2D" uid="uid://iihbhipeinui" path="res://Background.png" id="2_pmeri"]
+[ext_resource type="Texture2D" uid="uid://byk76htjxc3mn" path="res://backg.png" id="2_w3sa4"]
+[ext_resource type="Texture2D" uid="uid://bts3wf7g3b1e2" path="res://menu.png" id="3_djnby"]
+[ext_resource type="Texture2D" uid="uid://dg0rpvi27np1m" path="res://button.png" id="4_rwcdj"]
 
 [node name="MainMenu" type="Control" unique_id=599839940]
 layout_mode = 3
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_pmeri")
+texture = ExtResource("2_w3sa4")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=324693903]
 layout_mode = 1
@@ -33,16 +35,35 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1799536207]
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 theme_override_font_sizes/font_size = 50
 text = "Fall, man"
 
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Label" unique_id=350889146]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -54.0
+offset_right = 49.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_djnby")
+expand_mode = 1
+
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1179571395]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.70903146, 0, 0.20188496, 1)
-theme_override_font_sizes/font_size = 28
-text = "Press enter to play"
+theme_override_font_sizes/font_size = 60
+text = "                "
+icon = ExtResource("4_rwcdj")
 flat = true
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
