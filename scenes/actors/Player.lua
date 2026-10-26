@@ -13,6 +13,8 @@ function Player:_ready()
 	self.light = self:get_node("PlayerLight")
 	self.model = self:get_node("Model")
 	self.anim = self:get_node("Model/Ninja/AnimationPlayer2")
+	self.coyote_time = 0.12
+	self.coyote_timer = 0.0
 end
 
 function Player:_physics_process(delta)
@@ -21,6 +23,9 @@ function Player:_physics_process(delta)
 	-- Gravity
 	if not self:is_on_floor() then
 		velocity.y = velocity.y - self.gravity * delta
+		self.coyote_timer = self.coyote_timer - delta
+	else
+		self.coyote_timer = self.coyote_time
 	end
 
 	-- Movement input
@@ -43,8 +48,9 @@ function Player:_physics_process(delta)
 	end
 	
 	if Input:is_action_pressed("move_jump") then
-		if self:is_on_floor() then
+		if self.coyote_timer > 0 then
 			velocity.y = self.jump_strength
+			self.coyote_timer = 0
 		end
 	end
 		
