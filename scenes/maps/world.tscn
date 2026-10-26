@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dktan7o1uqm6m" path="res://scenes/maps/rotating_platform.gd" id="6_74gp3"]
 [ext_resource type="Script" uid="uid://gvit12xo7ryp" path="res://scenes/maps/air_current.gd" id="7_pq5yi"]
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
-[ext_resource type="Script" uid="uid://bekhh1dudeial" path="res://scenes/maps/Bouncepad.lua" id="9_s5d3o"]
+[ext_resource type="Script" uid="uid://bq360ew3d0ssy" path="res://scenes/maps/bouncepad.gd" id="9_s5d3o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -94,10 +94,19 @@ sky = SubResource("Sky_av32x")
 ambient_light_source = 3
 
 [sub_resource type="BoxMesh" id="BoxMesh_dnf87"]
-size = Vector3(3, 0.2, 3)
+size = Vector3(4, 0.2, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dnf87"]
-size = Vector3(3, 0.2, 3)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5d3o"]
+albedo_color = Color(0.07123137, 0.07123139, 0.07123137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlanf"]
+size = Vector3(4.2, 0.1, 4.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3aai"]
+albedo_color = Color(2.4787337e-06, 0.4590838, 0.2182517, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3aai"]
+size = Vector3(4, 0.2, 4)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -490,14 +499,17 @@ text = "The air current pushes you up!"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1454754085]
 environment = SubResource("Environment_pq5yi")
 
-[node name="Bouncepad" type="Area3D" parent="." unique_id=232668102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.090935, 0.3045838, 15.222059)
+[node name="Bouncepad" type="Area3D" parent="." unique_id=317993402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.14414, 0.5736489, 14.609863)
 script = ExtResource("9_s5d3o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncepad" unique_id=1087173353]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5122471)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncepad" unique_id=984160232]
 mesh = SubResource("BoxMesh_dnf87")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5d3o")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncepad" unique_id=315216637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5122471)
-shape = SubResource("BoxShape3D_dnf87")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncepad/MeshInstance3D" unique_id=1961062300]
+mesh = SubResource("BoxMesh_tlanf")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncepad" unique_id=97576262]
+shape = SubResource("BoxShape3D_x3aai")
