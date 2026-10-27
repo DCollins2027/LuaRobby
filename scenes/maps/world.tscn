@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://gvit12xo7ryp" path="res://scenes/maps/air_current.gd" id="7_pq5yi"]
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
 [ext_resource type="Script" uid="uid://bq360ew3d0ssy" path="res://scenes/maps/bouncepad.gd" id="9_s5d3o"]
-[ext_resource type="Script" uid="uid://lmmgk0phpl4y" path="res://scenes/maps/tree.gd" id="10_dnf87"]
+[ext_resource type="Script" uid="uid://blfp74a68gp4j" path="res://scenes/maps/zipline.gd" id="10_dnf87"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -41,6 +41,7 @@ material = SubResource("StandardMaterial3D_74gp3")
 size = Vector3(0.5, 0.2, 4.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_av32x"]
+albedo_color = Color(1, 0, 0.65882355, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_av32x"]
 
@@ -108,6 +109,17 @@ albedo_color = Color(2.4787337e-06, 0.4590838, 0.2182517, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3aai"]
 size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x3aai"]
+size = Vector3(10, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yicuf"]
+albedo_color = Color(0.15199637, 0.15199634, 0.15199634, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trjxu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yicuf"]
+size = Vector3(0.2, 0.4, 1)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -515,17 +527,215 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncepad" unique_id=97576262]
 shape = SubResource("BoxShape3D_x3aai")
 
-[node name="tree" type="Node3D" parent="." unique_id=1873803874]
+[node name="Level Checkpoint3" type="StaticBody3D" parent="." unique_id=396956391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.00436, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Level Checkpoint3" unique_id=206668631]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint3" unique_id=2089352680]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="Level Checkpoint3" unique_id=252834219 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint3/Checkpoint3" unique_id=241018457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint3/Checkpoint3" unique_id=2066695191]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Level Checkpoint3/Checkpoint3" unique_id=863175474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Level Checkpoint3/Checkpoint3" unique_id=506287791]
+
+[node name="Label" type="Label" parent="Level Checkpoint3/Checkpoint3/Message" unique_id=653344016]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
+
+[node name="Bouncepad" type="Area3D" parent="Level Checkpoint3" unique_id=1767736602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.182623, -5.670855, 0.080114365)
+script = ExtResource("9_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint3/Bouncepad" unique_id=267446372]
+mesh = SubResource("BoxMesh_dnf87")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint3/Bouncepad/MeshInstance3D" unique_id=517732054]
+mesh = SubResource("BoxMesh_tlanf")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint3/Bouncepad" unique_id=992826704]
+shape = SubResource("BoxShape3D_x3aai")
+
+[node name="Level Checkpoint4" type="StaticBody3D" parent="." unique_id=1050876626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.5436, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Level Checkpoint4" unique_id=1813295897]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint4" unique_id=991017716]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="Level Checkpoint4" unique_id=1450171062 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint4/Checkpoint3" unique_id=1529677724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint4/Checkpoint3" unique_id=506845066]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Level Checkpoint4/Checkpoint3" unique_id=19352223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Level Checkpoint4/Checkpoint3" unique_id=782942555]
+
+[node name="Label" type="Label" parent="Level Checkpoint4/Checkpoint3/Message" unique_id=1861140709]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
+
+[node name="Zipline" type="Node3D" parent="Level Checkpoint4" unique_id=395743909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.129745, 3.201, 0)
 script = ExtResource("10_dnf87")
 
-[node name="trunk" type="StaticBody3D" parent="tree" unique_id=494285276]
+[node name="Start" type="Marker3D" parent="Level Checkpoint4/Zipline" unique_id=806599678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
 
-[node name="hitbox" type="CollisionShape3D" parent="tree/trunk" unique_id=303217533]
+[node name="End" type="Marker3D" parent="Level Checkpoint4/Zipline" unique_id=550453610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.763287, 0.86911535, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="tree/trunk" unique_id=343008930]
+[node name="Cable" type="MeshInstance3D" parent="Level Checkpoint4/Zipline" unique_id=1546380797]
+transform = Transform3D(4.0949936, 0, 0, 0, 1, 0, 0, 0, 1, 15.454102, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
 
-[node name="leaves" type="StaticBody3D" parent="tree" unique_id=1845940945]
+[node name="GrabArea" type="Area3D" parent="Level Checkpoint4/Zipline" unique_id=2112920967]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="tree/leaves" unique_id=849501484]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint4/Zipline/GrabArea" unique_id=1696951930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
 
-[node name="hitbox" type="CollisionShape3D" parent="tree/leaves" unique_id=473625045]
+[node name="Handle" type="MeshInstance3D" parent="Level Checkpoint4/Zipline" unique_id=769769600]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")
+
+[node name="Bouncepad" type="Area3D" parent="Level Checkpoint4" unique_id=343217639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3636913, 0.574, 0)
+script = ExtResource("9_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint4/Bouncepad" unique_id=2127114165]
+mesh = SubResource("BoxMesh_dnf87")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint4/Bouncepad/MeshInstance3D" unique_id=1896561297]
+mesh = SubResource("BoxMesh_tlanf")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint4/Bouncepad" unique_id=1530405602]
+shape = SubResource("BoxShape3D_x3aai")
+
+[node name="Zipline" type="Node3D" parent="." unique_id=750159913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.23652, 3.2005515, -15.7395525)
+script = ExtResource("10_dnf87")
+
+[node name="Start" type="Marker3D" parent="Zipline" unique_id=1291131218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
+
+[node name="End" type="Marker3D" parent="Zipline" unique_id=1272781973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.722866, 0.86911535, 0)
+
+[node name="Cable" type="MeshInstance3D" parent="Zipline" unique_id=1869342260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
+
+[node name="GrabArea" type="Area3D" parent="Zipline" unique_id=193610703]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zipline/GrabArea" unique_id=1210149606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
+
+[node name="Handle" type="MeshInstance3D" parent="Zipline" unique_id=1036628889]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")
+
+[node name="Level Checkpoint5" type="StaticBody3D" parent="." unique_id=1938164703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.81302, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Level Checkpoint5" unique_id=42994365]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint5" unique_id=1239797180]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="Level Checkpoint5" unique_id=1997583747 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint5/Checkpoint3" unique_id=403373369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint5/Checkpoint3" unique_id=627355675]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Level Checkpoint5/Checkpoint3" unique_id=192710806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Level Checkpoint5/Checkpoint3" unique_id=851264104]
+
+[node name="Label" type="Label" parent="Level Checkpoint5/Checkpoint3/Message" unique_id=487015370]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
+
+[node name="Zipline" type="Node3D" parent="Level Checkpoint5" unique_id=1317607884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.313095, 15.249997, 0)
+script = ExtResource("10_dnf87")
+
+[node name="Start" type="Marker3D" parent="Level Checkpoint5/Zipline" unique_id=155367831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
+
+[node name="End" type="Marker3D" parent="Level Checkpoint5/Zipline" unique_id=1772694175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.763287, 0.86911535, 0)
+
+[node name="Cable" type="MeshInstance3D" parent="Level Checkpoint5/Zipline" unique_id=1342467529]
+transform = Transform3D(4.0949936, 0, 0, 0, 1, 0, 0, 0, 1, 15.454102, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
+
+[node name="GrabArea" type="Area3D" parent="Level Checkpoint5/Zipline" unique_id=1141225349]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint5/Zipline/GrabArea" unique_id=1815383300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
+
+[node name="Handle" type="MeshInstance3D" parent="Level Checkpoint5/Zipline" unique_id=2032885999]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")

@@ -18,6 +18,15 @@ function Player:_ready()
 end
 
 function Player:_physics_process(delta)
+	-- Zipline: the zipline script is moving us, so skip everything else
+	if self:get_meta("ziplining", false) then
+		-- Change "Fall" to whatever animation you want while hanging
+		if self.anim.current_animation ~= "Fall" then
+			self.anim:play("Fall", 0.15)
+		end
+		return
+	end
+
 	local velocity = self.velocity
 	
 	-- Gravity
@@ -53,11 +62,6 @@ function Player:_physics_process(delta)
 			self.coyote_timer = 0
 		end
 	end
-		
-
-	--if Input:is_action_pressed("jump") then
-		--input.y = input.y + 1
-	--end
 
 	input = input:normalized()
 
@@ -65,7 +69,6 @@ function Player:_physics_process(delta)
 	local camera_basis = self.base_cam.global_transform.basis
 	
 	-- Light follow Player
-	
 	local light_transform = self.light.global_transform
 	light_transform.basis = self.camera.global_transform.basis
 	self.light.global_transform = light_transform
@@ -127,6 +130,5 @@ function Player:_physics_process(delta)
 		self.anim:play(wanted, 0.15)
 	end
 end
-	
 
 return Player
