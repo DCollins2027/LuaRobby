@@ -763,7 +763,7 @@ mesh = SubResource("BoxMesh_28y8u")
 shape = SubResource("BoxShape3D_pcytr")
 
 [node name="Checkpoint3" type="Area3D" parent="Level Checkpoint6" unique_id=1595698191 groups=["checkpoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059646606, 0, 0)
 script = ExtResource("3_6w65o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint6/Checkpoint3" unique_id=384276133]
