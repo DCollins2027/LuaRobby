@@ -94,6 +94,12 @@ background_mode = 2
 background_energy_multiplier = 1.04
 sky = SubResource("Sky_av32x")
 ambient_light_source = 3
+fog_enabled = true
+fog_light_color = Color(0.1882353, 0.25882354, 0.32156864, 1)
+fog_density = 0.0262
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.5899028, 0.5899029, 0.5899029, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dnf87"]
 size = Vector3(4, 0.2, 4)
@@ -120,6 +126,12 @@ albedo_color = Color(0.15199637, 0.15199634, 0.15199634, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yicuf"]
 size = Vector3(0.2, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5be44"]
+size = Vector3(3, 10, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dktui"]
+size = Vector3(3, 10, 3)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -251,7 +263,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4514236, -3.1889443, 0.0465
 shape = SubResource("BoxShape3D_av32x")
 
 [node name="RotatingPlatform" type="AnimatableBody3D" parent="." unique_id=1706776042]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 43.838554, 0, -0.2599918)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 43.839, 0, 0)
 script = ExtResource("6_74gp3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RotatingPlatform" unique_id=742598413]
@@ -716,7 +728,7 @@ text = "Checkpoint reached!
 horizontal_alignment = 1
 
 [node name="Zipline" type="Node3D" parent="Level Checkpoint5" unique_id=1317607884]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.313095, 15.249997, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.313095, 12.949595, 0)
 script = ExtResource("10_dnf87")
 
 [node name="Start" type="Marker3D" parent="Level Checkpoint5/Zipline" unique_id=155367831]
@@ -739,3 +751,66 @@ shape = SubResource("BoxShape3D_trjxu")
 [node name="Handle" type="MeshInstance3D" parent="Level Checkpoint5/Zipline" unique_id=2032885999]
 transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
 mesh = SubResource("BoxMesh_yicuf")
+
+[node name="Level Checkpoint6" type="StaticBody3D" parent="." unique_id=2133475302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 361.33984, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Level Checkpoint6" unique_id=889514128]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint6" unique_id=1505014063]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="Level Checkpoint6" unique_id=1595698191 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint6/Checkpoint3" unique_id=384276133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint6/Checkpoint3" unique_id=1929159660]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Level Checkpoint6/Checkpoint3" unique_id=1225931057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Level Checkpoint6/Checkpoint3" unique_id=1027310545]
+
+[node name="Label" type="Label" parent="Level Checkpoint6/Checkpoint3/Message" unique_id=1094111453]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
+
+[node name="Pillar Jump" type="StaticBody3D" parent="." unique_id=1194332282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333.20313, -4.7693453, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar Jump" unique_id=719992632]
+mesh = SubResource("BoxMesh_5be44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar Jump" unique_id=18997340]
+shape = SubResource("BoxShape3D_dktui")
+
+[node name="Pillar Jump" type="StaticBody3D" parent="Pillar Jump" unique_id=1891281361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.055023, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar Jump/Pillar Jump" unique_id=1516751584]
+mesh = SubResource("BoxMesh_5be44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar Jump/Pillar Jump" unique_id=712499468]
+shape = SubResource("BoxShape3D_dktui")
+
+[node name="Pillar Jump" type="StaticBody3D" parent="Pillar Jump/Pillar Jump" unique_id=1082812645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9869995, -0.103786945, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar Jump/Pillar Jump/Pillar Jump" unique_id=862536549]
+mesh = SubResource("BoxMesh_5be44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar Jump/Pillar Jump/Pillar Jump" unique_id=1968570853]
+shape = SubResource("BoxShape3D_dktui")
