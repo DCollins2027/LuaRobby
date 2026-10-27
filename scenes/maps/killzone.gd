@@ -34,6 +34,7 @@ func _on_body_entered(body):
 	if not body.is_in_group("player") or dying:
 		return
 	dying = true
+	Respawn.deaths += 1
 	body.set_physics_process(false)
 	Engine.time_scale = 0.3
 
