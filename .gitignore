@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+scenes/maps/lava.gd
+scenes/maps/lava.gd.uid
+scenes/maps/rotating_body.gd.uid
+scenes/maps/rotating_object.gd
+scenes/maps/rotating_body.gd
+scenes/maps/rotating_object.gd.uid

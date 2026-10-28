@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
 [ext_resource type="Script" uid="uid://bq360ew3d0ssy" path="res://scenes/maps/bouncepad.gd" id="9_s5d3o"]
 [ext_resource type="Script" uid="uid://blfp74a68gp4j" path="res://scenes/maps/zipline.gd" id="10_dnf87"]
+[ext_resource type="Script" uid="uid://sl47ps2qsvmk" path="res://scenes/maps/killblock.gd" id="11_tlanf"]
+[ext_resource type="Script" uid="uid://drvskbedcmxd" path="res://scenes/maps/animatable_body_3d.gd" id="12_x3aai"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -94,6 +96,7 @@ background_mode = 2
 background_energy_multiplier = 1.04
 sky = SubResource("Sky_av32x")
 ambient_light_source = 3
+ambient_light_color = Color(0.69467354, 0.69467354, 0.6946735, 1)
 fog_enabled = true
 fog_light_color = Color(0.1882353, 0.25882354, 0.32156864, 1)
 fog_density = 0.0262
@@ -132,6 +135,29 @@ size = Vector3(3, 10, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dktui"]
 size = Vector3(3, 10, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trjxu"]
+size = Vector3(0.2, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqth2"]
+albedo_color = Color(0.7343202, 0.113985546, 0, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_28gx0"]
+data = PackedVector3Array(-0.099999994, 2.5, 2.5, 0.099999994, 2.5, 2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, 2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, -2.5, 0.099999994, -2.5, -2.5, -0.099999994, 2.5, -2.5, -0.099999994, -2.5, -2.5, 0.099999994, -2.5, -2.5, 0.099999994, 2.5, 2.5, 0.099999994, 2.5, -2.5, 0.099999994, -2.5, 2.5, 0.099999994, 2.5, -2.5, 0.099999994, -2.5, -2.5, 0.099999994, -2.5, 2.5, -0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, -0.099999994, -2.5, -2.5, -0.099999994, 2.5, 2.5, -0.099999994, -2.5, 2.5, -0.099999994, -2.5, -2.5, 0.099999994, 2.5, 2.5, -0.099999994, 2.5, 2.5, 0.099999994, 2.5, -2.5, -0.099999994, 2.5, 2.5, -0.099999994, 2.5, -2.5, 0.099999994, 2.5, -2.5, -0.099999994, -2.5, 2.5, 0.099999994, -2.5, 2.5, -0.099999994, -2.5, -2.5, 0.099999994, -2.5, 2.5, 0.099999994, -2.5, -2.5, -0.099999994, -2.5, -2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqth2"]
+size = Vector3(8, 0.2, 8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5be44"]
+data = PackedVector3Array(-4, 0.099999994, 4, 4, 0.099999994, 4, -4, -0.099999994, 4, 4, 0.099999994, 4, 4, -0.099999994, 4, -4, -0.099999994, 4, 4, 0.099999994, -4, -4, 0.099999994, -4, 4, -0.099999994, -4, -4, 0.099999994, -4, -4, -0.099999994, -4, 4, -0.099999994, -4, 4, 0.099999994, 4, 4, 0.099999994, -4, 4, -0.099999994, 4, 4, 0.099999994, -4, 4, -0.099999994, -4, 4, -0.099999994, 4, -4, 0.099999994, -4, -4, 0.099999994, 4, -4, -0.099999994, -4, -4, 0.099999994, 4, -4, -0.099999994, 4, -4, -0.099999994, -4, 4, 0.099999994, 4, -4, 0.099999994, 4, 4, 0.099999994, -4, -4, 0.099999994, 4, -4, 0.099999994, -4, 4, 0.099999994, -4, -4, -0.099999994, 4, 4, -0.099999994, 4, -4, -0.099999994, -4, 4, -0.099999994, 4, 4, -0.099999994, -4, -4, -0.099999994, -4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dktui"]
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.447
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3boca"]
+size = Vector3(8, 0.447, 8)
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -814,3 +840,220 @@ mesh = SubResource("BoxMesh_5be44")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar Jump/Pillar Jump/Pillar Jump" unique_id=1968570853]
 shape = SubResource("BoxShape3D_dktui")
+
+[node name="Killblock" type="StaticBody3D" parent="." unique_id=1044098773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.80283, 10.353373, 0)
+script = ExtResource("11_tlanf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Killblock" unique_id=1600850979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.591827, 2.9148808, 0)
+mesh = SubResource("BoxMesh_trjxu")
+surface_material_override/0 = SubResource("StandardMaterial3D_aqth2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killblock" unique_id=681897693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.591827, 2.9148808, 0)
+shape = SubResource("ConcavePolygonShape3D_28gx0")
+
+[node name="AirCurrent2" type="Area3D" parent="." unique_id=1558294369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.04834, 4.253418, -3.9877737)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AirCurrent2" unique_id=1280772126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AirCurrent2" unique_id=1320478020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
+
+[node name="Zipline2" type="Node3D" parent="." unique_id=664367754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.18472, 12.949595, 0)
+script = ExtResource("10_dnf87")
+
+[node name="Start" type="Marker3D" parent="Zipline2" unique_id=1013128881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
+
+[node name="End" type="Marker3D" parent="Zipline2" unique_id=1600197908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.763287, 0.86911535, 0)
+
+[node name="Cable" type="MeshInstance3D" parent="Zipline2" unique_id=922794498]
+transform = Transform3D(4.0949936, 0, 0, 0, 1, 0, 0, 0, 1, 15.454102, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
+
+[node name="GrabArea" type="Area3D" parent="Zipline2" unique_id=1559661703]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zipline2/GrabArea" unique_id=169497546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
+
+[node name="Handle" type="MeshInstance3D" parent="Zipline2" unique_id=210610224]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")
+
+[node name="Level Checkpoint7" type="StaticBody3D" parent="." unique_id=1028334324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 418.20074, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Level Checkpoint7" unique_id=1740303437]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_28y8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint7" unique_id=1480571070]
+shape = SubResource("BoxShape3D_pcytr")
+
+[node name="Checkpoint3" type="Area3D" parent="Level Checkpoint7" unique_id=398234078 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42933655, 0, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level Checkpoint7/Checkpoint3" unique_id=1870986405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level Checkpoint7/Checkpoint3" unique_id=760823639]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Level Checkpoint7/Checkpoint3" unique_id=1490872166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Level Checkpoint7/Checkpoint3" unique_id=896895667]
+
+[node name="Label" type="Label" parent="Level Checkpoint7/Checkpoint3/Message" unique_id=335920145]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
+
+[node name="Label3D" type="Label3D" parent="Level Checkpoint7" unique_id=1188425792]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5867615, 10.908876, 0.16030276)
+pixel_size = 0.03
+text = "Jump to get off the zipline!"
+
+[node name="Final Level" type="Node3D" parent="." unique_id=1209961008]
+
+[node name="AirCurrent2" type="Area3D" parent="Final Level" unique_id=51973007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 428.42474, 2.9945092, -3.9877737)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/AirCurrent2" unique_id=1441942080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/AirCurrent2" unique_id=270319793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
+
+[node name="AirCurrent2" type="Area3D" parent="Final Level/AirCurrent2" unique_id=1490137858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067840576, 11.705201, 0.05402422)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/AirCurrent2/AirCurrent2" unique_id=1252900061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/AirCurrent2/AirCurrent2" unique_id=889018310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
+
+[node name="AirCurrent2" type="Area3D" parent="Final Level/AirCurrent2/AirCurrent2" unique_id=950681587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067840576, 11.705201, 0.05402422)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/AirCurrent2/AirCurrent2/AirCurrent2" unique_id=1314032234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/AirCurrent2/AirCurrent2/AirCurrent2" unique_id=1264107605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Final Level" unique_id=368846270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 439.40665, 29.715616, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/StaticBody3D" unique_id=260509790]
+mesh = SubResource("BoxMesh_aqth2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/StaticBody3D" unique_id=1232668549]
+shape = SubResource("ConcavePolygonShape3D_5be44")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Final Level" unique_id=491756908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 450.43716, 28.744987, 0)
+script = ExtResource("12_x3aai")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/AnimatableBody3D" unique_id=33861156]
+mesh = SubResource("CylinderMesh_dktui")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/AnimatableBody3D" unique_id=1482830357]
+shape = SubResource("BoxShape3D_3boca")
+
+[node name="Bouncepad" type="Area3D" parent="Final Level" unique_id=469936034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 469.49872, 19.175188, 0)
+script = ExtResource("9_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/Bouncepad" unique_id=1029871605]
+mesh = SubResource("BoxMesh_dnf87")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5d3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/Bouncepad/MeshInstance3D" unique_id=2007413046]
+mesh = SubResource("BoxMesh_tlanf")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3aai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/Bouncepad" unique_id=1451076100]
+shape = SubResource("BoxShape3D_x3aai")
+
+[node name="Zipline" type="Node3D" parent="Final Level" unique_id=1872102341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 491.93613, 20.18814, 0)
+script = ExtResource("10_dnf87")
+
+[node name="Start" type="Marker3D" parent="Final Level/Zipline" unique_id=2043361923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
+
+[node name="End" type="Marker3D" parent="Final Level/Zipline" unique_id=1379738380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.763287, 0.86911535, 0)
+
+[node name="Cable" type="MeshInstance3D" parent="Final Level/Zipline" unique_id=461000016]
+transform = Transform3D(4.0949936, 0, 0, 0, 1, 0, 0, 0, 1, 15.454102, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
+
+[node name="GrabArea" type="Area3D" parent="Final Level/Zipline" unique_id=758064654]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/Zipline/GrabArea" unique_id=1847107733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
+
+[node name="Handle" type="MeshInstance3D" parent="Final Level/Zipline" unique_id=472989901]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")
+
+[node name="Zipline2" type="Node3D" parent="Final Level" unique_id=693206754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 538.7872, 12.949595, 0)
+script = ExtResource("10_dnf87")
+
+[node name="Start" type="Marker3D" parent="Final Level/Zipline2" unique_id=1997136427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.961117, 0.9195142, 0)
+
+[node name="End" type="Marker3D" parent="Final Level/Zipline2" unique_id=471620895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.763287, 0.86911535, 0)
+
+[node name="Cable" type="MeshInstance3D" parent="Final Level/Zipline2" unique_id=573296582]
+transform = Transform3D(4.0949936, 0, 0, 0, 1, 0, 0, 0, 1, 15.454102, 0.2685995, 0)
+mesh = SubResource("BoxMesh_x3aai")
+surface_material_override/0 = SubResource("StandardMaterial3D_yicuf")
+
+[node name="GrabArea" type="Area3D" parent="Final Level/Zipline2" unique_id=1845124153]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/Zipline2/GrabArea" unique_id=252267091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9161816, 0, 0)
+shape = SubResource("BoxShape3D_trjxu")
+
+[node name="Handle" type="MeshInstance3D" parent="Final Level/Zipline2" unique_id=2116870827]
+transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
+mesh = SubResource("BoxMesh_yicuf")

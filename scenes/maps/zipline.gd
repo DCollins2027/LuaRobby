@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed := 12.0
+@export var speed := 16.0
 @export var hang_offset := Vector3(0, -1.8, 0)  # how far below the cable the player hangs
 @export var return_time := 2.0  # seconds for the handle to slide back
 
