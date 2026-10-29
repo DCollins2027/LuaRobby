@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
 [ext_resource type="Script" uid="uid://bq360ew3d0ssy" path="res://scenes/maps/bouncepad.gd" id="9_s5d3o"]
 [ext_resource type="Script" uid="uid://blfp74a68gp4j" path="res://scenes/maps/zipline.gd" id="10_dnf87"]
-[ext_resource type="Script" uid="uid://sl47ps2qsvmk" path="res://scenes/maps/killblock.gd" id="11_tlanf"]
-[ext_resource type="Script" uid="uid://drvskbedcmxd" path="res://scenes/maps/animatable_body_3d.gd" id="12_x3aai"]
 [ext_resource type="Script" uid="uid://dfk7gyxdl67h" path="res://scenes/maps/finish.gd" id="11_tlanf"]
+[ext_resource type="Script" uid="uid://sl47ps2qsvmk" path="res://scenes/maps/killblock.gd" id="11_yicuf"]
+[ext_resource type="Script" uid="uid://drvskbedcmxd" path="res://scenes/maps/animatable_body_3d.gd" id="12_x3aai"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -159,10 +159,9 @@ height = 0.447
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3boca"]
 size = Vector3(8, 0.447, 8)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_dnf87"]
 size = Vector3(1, 2.5507507, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_trjxu"]
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -848,7 +847,7 @@ shape = SubResource("BoxShape3D_dktui")
 
 [node name="Killblock" type="StaticBody3D" parent="." unique_id=1044098773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.80283, 10.353373, 0)
-script = ExtResource("11_tlanf")
+script = ExtResource("11_yicuf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Killblock" unique_id=1600850979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.591827, 2.9148808, 0)
@@ -1062,6 +1061,7 @@ shape = SubResource("BoxShape3D_trjxu")
 [node name="Handle" type="MeshInstance3D" parent="Final Level/Zipline2" unique_id=2116870827]
 transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
 mesh = SubResource("BoxMesh_yicuf")
+
 [node name="Finish" type="Area3D" parent="." unique_id=1892515448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3630905, 0, -5.134996)
 script = ExtResource("11_tlanf")
