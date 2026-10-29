@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://blfp74a68gp4j" path="res://scenes/maps/zipline.gd" id="10_dnf87"]
 [ext_resource type="Script" uid="uid://sl47ps2qsvmk" path="res://scenes/maps/killblock.gd" id="11_tlanf"]
 [ext_resource type="Script" uid="uid://drvskbedcmxd" path="res://scenes/maps/animatable_body_3d.gd" id="12_x3aai"]
+[ext_resource type="Script" uid="uid://dfk7gyxdl67h" path="res://scenes/maps/finish.gd" id="11_tlanf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6w65o"]
 
@@ -158,6 +159,10 @@ height = 0.447
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3boca"]
 size = Vector3(8, 0.447, 8)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnf87"]
+size = Vector3(1, 2.5507507, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trjxu"]
 
 [node name="World" type="Node3D" unique_id=1484464901]
 script = ExtResource("1_55aix")
@@ -275,7 +280,7 @@ text = "Checkpoint reached!
 horizontal_alignment = 1
 
 [node name="KillBrick" type="Area3D" parent="." unique_id=1383352333 groups=["killzone"]]
-transform = Transform3D(0.9705224, 0, 0, 0, 1, 0, 0, 0, 1, 13.466339, 3.2817092, 0)
+transform = Transform3D(0.9705224, 0, 0, 0, 1, 0, 0, 0, 1, 13.466339, 3.2817092, -0.045375586)
 script = ExtResource("4_55aix")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="KillBrick" unique_id=1717244687]
@@ -1057,3 +1062,14 @@ shape = SubResource("BoxShape3D_trjxu")
 [node name="Handle" type="MeshInstance3D" parent="Final Level/Zipline2" unique_id=2116870827]
 transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
 mesh = SubResource("BoxMesh_yicuf")
+[node name="Finish" type="Area3D" parent="." unique_id=1892515448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3630905, 0, -5.134996)
+script = ExtResource("11_tlanf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Finish" unique_id=1661578010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.016241, 0.77537537, -0.6863799)
+shape = SubResource("BoxShape3D_dnf87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Finish" unique_id=281429105]
+transform = Transform3D(1, 0, 0, 0, 3.7282307, 0, 0, 0, 1, 3.0169935, 0, -0.70812464)
+mesh = SubResource("BoxMesh_trjxu")
