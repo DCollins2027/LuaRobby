@@ -12,13 +12,13 @@ func _ready():
 	add_child(layer)
 
 	rect = ColorRect.new()
-	rect.color = Color(0.8, 0, 0, 0)
+	rect.color = Color(0.353, 0.571, 0.957, 0.0)
 	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(rect)
 
 	label = Label.new()
-	label.text = "You fell (and died)!"
+	label.text = "You can't swim!"
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER

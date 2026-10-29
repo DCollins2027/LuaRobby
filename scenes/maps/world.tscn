@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://t1ets62i6iey" path="res://scenes/maps/killzone.gd" id="2_bxnbg"]
 [ext_resource type="Script" uid="uid://buvesqp0oc684" path="res://scenes/maps/checkpoint.gd" id="3_6w65o"]
 [ext_resource type="Script" uid="uid://bl6pu2ugicduh" path="res://scenes/maps/kill_brick.gd" id="4_55aix"]
+[ext_resource type="Shader" uid="uid://d0h562q1fgglt" path="res://water.gdshader" id="4_trjxu"]
 [ext_resource type="Script" uid="uid://dktan7o1uqm6m" path="res://scenes/maps/rotating_platform.gd" id="6_74gp3"]
 [ext_resource type="Script" uid="uid://gvit12xo7ryp" path="res://scenes/maps/air_current.gd" id="7_pq5yi"]
 [ext_resource type="Texture2D" uid="uid://bv5eo4tnyyyvu" path="res://citrus_orchard_road_puresky_4k.exr" id="8_av32x"]
@@ -21,6 +22,28 @@ size = Vector3(10, 0.2, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bxnbg"]
 size = Vector3(5000, 0.1, 5000)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_trjxu"]
+lightmap_size_hint = Vector2i(500002, 500002)
+size = Vector2(100000, 100000)
+subdivide_width = 500
+subdivide_depth = 1000
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqth2"]
+render_priority = 0
+shader = ExtResource("4_trjxu")
+shader_parameter/water_color = Color(0.15, 0.45, 0.85, 0.6)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_height = 3.0
+shader_parameter/wave_scale = 0.5
+shader_parameter/impact_pos = Vector2(0, 0)
+shader_parameter/impact_time = -100.0
+shader_parameter/ring_speed = 3.0
+shader_parameter/ring_width = 0.4
+shader_parameter/ring_fade = 2.5
+shader_parameter/ripple_scale = 2.0
+shader_parameter/ripple_speed = 2.5
+shader_parameter/ripple_strength = 0.35
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6w65o"]
 size = Vector3(4.5, 3.5, 4.5)
@@ -160,6 +183,12 @@ height = 0.447
 [sub_resource type="BoxShape3D" id="BoxShape3D_3boca"]
 size = Vector3(8, 0.447, 8)
 
+[sub_resource type="BoxMesh" id="BoxMesh_28gx0"]
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dktui"]
+data = PackedVector3Array(-5, 0.099999994, 5, 5, 0.099999994, 5, -5, -0.099999994, 5, 5, 0.099999994, 5, 5, -0.099999994, 5, -5, -0.099999994, 5, 5, 0.099999994, -5, -5, 0.099999994, -5, 5, -0.099999994, -5, -5, 0.099999994, -5, -5, -0.099999994, -5, 5, -0.099999994, -5, 5, 0.099999994, 5, 5, 0.099999994, -5, 5, -0.099999994, 5, 5, 0.099999994, -5, 5, -0.099999994, -5, 5, -0.099999994, 5, -5, 0.099999994, -5, -5, 0.099999994, 5, -5, -0.099999994, -5, -5, 0.099999994, 5, -5, -0.099999994, 5, -5, -0.099999994, -5, 5, 0.099999994, 5, -5, 0.099999994, 5, 5, 0.099999994, -5, -5, 0.099999994, 5, -5, 0.099999994, -5, 5, 0.099999994, -5, -5, -0.099999994, 5, 5, -0.099999994, 5, -5, -0.099999994, -5, 5, -0.099999994, 5, 5, -0.099999994, -5, -5, -0.099999994, -5)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_dnf87"]
 size = Vector3(1, 2.5507507, 1)
 
@@ -185,6 +214,11 @@ script = ExtResource("2_bxnbg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=132206423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
 shape = SubResource("BoxShape3D_bxnbg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Killzone" unique_id=489988939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.821178, 0)
+mesh = SubResource("PlaneMesh_trjxu")
+surface_material_override/0 = SubResource("ShaderMaterial_aqth2")
 
 [node name="Checkpoint" type="Area3D" parent="." unique_id=1927262795 groups=["checkpoints"]]
 script = ExtResource("3_6w65o")
@@ -1061,6 +1095,78 @@ shape = SubResource("BoxShape3D_trjxu")
 [node name="Handle" type="MeshInstance3D" parent="Final Level/Zipline2" unique_id=2116870827]
 transform = Transform3D(2.0549366, 0, 0, 0, 1, 0, 0, 0, 1, -4.6807804, 0, -0.02320671)
 mesh = SubResource("BoxMesh_yicuf")
+
+[node name="plate" type="StaticBody3D" parent="Final Level" unique_id=1259483254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573.38837, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/plate" unique_id=608631947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+mesh = SubResource("BoxMesh_28gx0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/plate" unique_id=677361398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_dktui")
+
+[node name="plate" type="StaticBody3D" parent="Final Level/plate" unique_id=1630647566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.172424, 1.2466412, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/plate/plate" unique_id=1042094160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+mesh = SubResource("BoxMesh_28gx0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/plate/plate" unique_id=681398569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_dktui")
+
+[node name="AirCurrent3" type="Area3D" parent="Final Level" unique_id=1482171275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588.7556, 3.8765788, -4.410671)
+script = ExtResource("7_pq5yi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/AirCurrent3" unique_id=1153600236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+mesh = SubResource("BoxMesh_s5d3o")
+surface_material_override/0 = SubResource("StandardMaterial3D_dnf87")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/AirCurrent3" unique_id=390194997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7761507, 4.3353214)
+shape = SubResource("BoxShape3D_tlanf")
+
+[node name="plate2" type="StaticBody3D" parent="Final Level" unique_id=1127364330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 609.78143, 9.433354, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/plate2" unique_id=787050446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+mesh = SubResource("BoxMesh_28gx0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/plate2" unique_id=901571474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1166992, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_dktui")
+
+[node name="Checkpoint3" type="Area3D" parent="Final Level" unique_id=634701834 groups=["checkpoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 613.14874, 9.463264, 0)
+script = ExtResource("3_6w65o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Final Level/Checkpoint3" unique_id=1491567915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8809109, 0)
+shape = SubResource("BoxShape3D_6w65o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Final Level/Checkpoint3" unique_id=1003771831]
+transform = Transform3D(1.9658328, 0, 0, 0, 0.1410109, 0, 0, 0, 2.0946977, 0, 0.04335916, 0)
+mesh = SubResource("BoxMesh_55aix")
+surface_material_override/0 = SubResource("ORMMaterial3D_lvkeh")
+
+[node name="RespawnPoint" type="Marker3D" parent="Final Level/Checkpoint3" unique_id=1609250705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Message" type="CanvasLayer" parent="Final Level/Checkpoint3" unique_id=2019334104]
+
+[node name="Label" type="Label" parent="Final Level/Checkpoint3/Message" unique_id=1249758770]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Checkpoint reached!
+"
+horizontal_alignment = 1
 
 [node name="Finish" type="Area3D" parent="." unique_id=1892515448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3630905, 0, -5.134996)
