@@ -1,4 +1,5 @@
 extends MeshInstance3D
+<<<<<<< HEAD
  
 var rect: ColorRect
 var label: Label
@@ -88,3 +89,15 @@ func _on_body_entered(body):
 	t2.parallel().tween_property(label, "modulate:a", 0.0, 0.4)
 	await t2.finished
 	dying = false
+=======
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+>>>>>>> 538361bc9639a2e4b6c7ac1dea6305cb036d787d

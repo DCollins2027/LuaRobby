@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 extends Node3D
+=======
+extends StaticBody3D
+>>>>>>> 538361bc9639a2e4b6c7ac1dea6305cb036d787d
  
 var rect: ColorRect
 var label: Label
@@ -65,7 +69,10 @@ func _on_body_entered(body):
 	if not body.is_in_group("player") or dying:
 		return
 	dying = true
+<<<<<<< HEAD
 	Respawn.deaths += 1
+=======
+>>>>>>> 538361bc9639a2e4b6c7ac1dea6305cb036d787d
 	body.set_physics_process(false)
 	Engine.time_scale = 0.3
  
